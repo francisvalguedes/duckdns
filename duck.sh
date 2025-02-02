@@ -52,8 +52,8 @@ if [ "$CURRENT_IP" != "$LAST_IP" ] || [ "$FORCE_UPDATE" = true ]; then
     # Verify if the response is "OK"
     if [[ "$RESPONSE" == "OK" ]]; then
         echo "$CURRENT_IP" > "$IP_FILE"  # Save the new IP
-        echo "$(date) - IP updated to: $CURRENT_IP" | tee -a "$DUCKPATH/stdout.log"
+        echo "$(date '+%Y-%m-%d; %H:%M:%S; UTC'); IP updated: $CURRENT_IP" | tee -a "$DUCKPATH/stdout.log"
     else
-        echo "$(date) - Error updating IP: $RESPONSE" | tee -a "$DUCKPATH/stderr.log"
+        echo "$(date '+%Y-%m-%d; %H:%M:%S; UTC'); Error updating IP: $RESPONSE" | tee -a "$DUCKPATH/stderr.log"
     fi
 fi
